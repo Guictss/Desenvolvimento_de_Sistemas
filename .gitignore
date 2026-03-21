@@ -1,0 +1,13 @@
+# Ignorar configurações locais do VS Code
+.vscode/
+
+# Ignorar pastas de dependências do PHP (caso usem o 'Composer' mais para a frente)
+vendor/
+
+# Ignorar ficheiros de registo de erros gerados pelo servidor
+*.log
+error_log
+
+# Ignorar ficheiros do sistema operativo (Mac/Windows)
+.DS_Store
+Thumbs.db
