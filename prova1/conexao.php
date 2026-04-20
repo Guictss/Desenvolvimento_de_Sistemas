@@ -4,7 +4,7 @@
     $user = "root";
     $porta = "3306";
     $password = "ReapperOW31.";
-    $db = "projeto";
+    $db = "prova";
 
 
     $conexao = new PDO(

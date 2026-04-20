@@ -1,11 +1,12 @@
 <?php
-include 'conexao.php';
+
+include '../conexao.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     try {
-        $sql = "DELETE FROM times WHERE id = :id";
+        $sql = "DELETE FROM aluno WHERE id = :id";
         $stmt = $conexao->prepare($sql);
         
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
