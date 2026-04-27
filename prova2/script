@@ -1,0 +1,31 @@
+-- Criação do banco
+CREATE DATABASE tarefas;
+USE tarefas;
+
+-- Tabela de usuários
+CREATE TABLE usuarios (
+    id      INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL,
+    senha   VARCHAR(255) NOT NULL
+);
+
+-- Tabela de tarefas
+CREATE TABLE tarefas (
+    id        INT AUTO_INCREMENT PRIMARY KEY,
+    titulo    VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    status    ENUM('pendente', 'concluida') DEFAULT 'pendente'
+);
+
+-- Usuário de teste
+INSERT INTO usuarios (usuario, senha) VALUES ('admin', MD5('123456'));
+
+-- Tarefas de teste
+INSERT INTO tarefas (titulo, descricao, status) VALUES
+('Estudar PHP',         'Revisar conexão com banco de dados',     'concluida'),
+('Fazer exercícios',    'Treino de 30 minutos na academia',        'pendente'),
+('Comprar mantimentos', 'Arroz, feijão, ovos e café',             'pendente'),
+('Entregar relatório',  'Relatório mensal para o professor',       'concluida'),
+('Atualizar portfólio', 'Adicionar projetos recentes no GitHub',   'pendente'),
+('Ler documentação',    'Estudar a documentação do Bootstrap 5',   'pendente'),
+('Reunião de equipe',   'Alinhamento do projeto da faculdade',     'concluida');
