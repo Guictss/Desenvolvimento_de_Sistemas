@@ -1,0 +1,61 @@
+/* ── Paleta Vela Para Todos ── */
+:root {
+    --azul:       #1D71B8;
+    --azul-med:   #1F7AC4;
+    --azul-dark:  #19629E;
+    --amarelo:    #F9B233;
+    --amarelo-d:  #E09F2D;
+    --dark:       #323232;
+    --gray:       #4A4A4A;
+    --light-blue: #E8F3FB;
+}
+
+/* ── Fundo da tela de login ── */
+.bg-login {
+    background: linear-gradient(135deg, var(--azul-dark) 0%, var(--azul-med) 60%, var(--amarelo) 100%);
+}
+
+/* ── Card de login ── */
+.card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--azul-dark), var(--azul-med));
+    border-bottom: 4px solid var(--amarelo);
+}
+
+.card-footer {
+    background: var(--light-blue);
+    border-top: 1px solid #dee2e6;
+}
+
+/* ── Botão primário ── */
+.btn-primary {
+    background-color: var(--azul);
+    border-color: var(--azul-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--azul-dark);
+    border-color: var(--azul-dark);
+}
+
+/* ── Navbar ── */
+.navbar-vela {
+    background: linear-gradient(90deg, var(--azul-dark), var(--azul-med));
+    border-bottom: 4px solid var(--amarelo);
+}
+
+/* ── Badges de papel ── */
+.badge-aluno {
+    background-color: var(--azul-med);
+    color: white;
+}
+
+.badge-professor {
+    background-color: var(--amarelo-d);
+    color: var(--dark);
+}
