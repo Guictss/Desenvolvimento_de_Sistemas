@@ -1,4 +1,6 @@
-/* ── Paleta Vela Para Todos ── */
+/* ─────────────────────────────────────────────────────────────────────────
+   PALETA — Programa Vela Para Todos
+─────────────────────────────────────────────────────────────────────────── */
 :root {
     --azul:       #1D71B8;
     --azul-med:   #1F7AC4;
@@ -10,29 +12,9 @@
     --light-blue: #E8F3FB;
 }
 
-/* ── Fundo da tela de login ── */
-.bg-login {
-    background: linear-gradient(135deg, var(--azul-dark) 0%, var(--azul-med) 60%, var(--amarelo) 100%);
-}
-
-/* ── Card de login ── */
-.card {
-    border: none;
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.card-header {
-    background: linear-gradient(135deg, var(--azul-dark), var(--azul-med));
-    border-bottom: 4px solid var(--amarelo);
-}
-
-.card-footer {
-    background: var(--light-blue);
-    border-top: 1px solid #dee2e6;
-}
-
-/* ── Botão primário ── */
+/* ─────────────────────────────────────────────────────────────────────────
+   BOTÕES
+─────────────────────────────────────────────────────────────────────────── */
 .btn-primary {
     background-color: var(--azul);
     border-color: var(--azul-dark);
@@ -43,19 +25,151 @@
     border-color: var(--azul-dark);
 }
 
-/* ── Navbar ── */
+/* ─────────────────────────────────────────────────────────────────────────
+   NAVBAR AUTENTICADA
+─────────────────────────────────────────────────────────────────────────── */
 .navbar-vela {
-    background: linear-gradient(90deg, var(--azul-dark), var(--azul-med));
+    background: white;
     border-bottom: 4px solid var(--amarelo);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 0;
 }
 
-/* ── Badges de papel ── */
+.navbar-vela-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.navbar-brand-vela {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-logo {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ── Botões da navbar ─────────────────────────────────────────────────── */
+.nav-btn {
+    color: var(--azul-dark);
+    border: 1.5px solid var(--azul);
+    background: transparent;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    background: var(--azul);
+    color: white;
+}
+
+/* ── Info do usuário ──────────────────────────────────────────────────── */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 12px;
+    background: var(--light-blue);
+    border-radius: 30px;
+}
+
+.user-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--azul-med), var(--azul-dark));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--azul-dark);
+    white-space: nowrap;
+}
+
+/* ── Botão Sair ───────────────────────────────────────────────────────── */
+.btn-sair {
+    background: var(--amarelo);
+    color: var(--dark);
+    border: none;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-sair:hover {
+    background: var(--amarelo-d);
+    color: var(--dark);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BADGES DE PAPEL
+─────────────────────────────────────────────────────────────────────────── */
+.badge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    width: fit-content;
+}
+
 .badge-aluno {
-    background-color: var(--azul-med);
+    background: var(--azul-med);
     color: white;
 }
 
 .badge-professor {
-    background-color: var(--amarelo-d);
+    background: var(--amarelo);
     color: var(--dark);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   RESPONSIVO
+─────────────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .user-details {
+        display: none;
+    }
+    .nav-btn {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
 }

@@ -1,0 +1,125 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   AUTH PAGES — Login e Cadastro
+─────────────────────────────────────────────────────────────────────────── */
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.auth-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ── Coluna visual (lado esquerdo) ────────────────────────────────────── */
+.auth-visual {
+    flex: 1;
+    background: linear-gradient(135deg, var(--azul-dark) 0%, var(--azul-med) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.auth-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/pattern-hexagonal.jpg');
+    background-size: 500px;
+    opacity: 0.08;
+}
+
+.auth-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 480px;
+}
+
+.auth-logo {
+    width: 160px;
+    margin-bottom: 2rem;
+    filter: brightness(0) invert(1); /* logo branca */
+}
+
+.auth-mascote {
+    width: 280px;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+}
+
+/* ── Coluna do formulário (lado direito) ──────────────────────────────── */
+.auth-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 2rem;
+}
+
+.auth-form-inner {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ── Botão principal ──────────────────────────────────────────────────── */
+.btn-vela-azul {
+    background: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.btn-vela-azul:hover {
+    background: var(--azul-dark);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(29, 113, 184, 0.3);
+}
+
+/* ── Inputs ───────────────────────────────────────────────────────────── */
+.auth-form-inner .form-control,
+.auth-form-inner .form-select {
+    border-radius: 8px;
+    border: 1.5px solid #dee2e6;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-form-inner .form-control:focus,
+.auth-form-inner .form-select:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(29, 113, 184, 0.15);
+}
+
+/* ── Responsivo ───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .auth-container {
+        flex-direction: column;
+    }
+    .auth-visual {
+        min-height: 280px;
+        padding: 2rem 0;
+    }
+    .auth-mascote {
+        width: 180px;
+        margin-bottom: 1rem;
+    }
+    .auth-logo {
+        width: 120px;
+        margin-bottom: 1rem;
+    }
+}

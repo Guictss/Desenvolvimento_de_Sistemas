@@ -4,7 +4,7 @@ include 'conexao.php';
 
 // Apenas professores podem cadastrar aulas
 if ($_SESSION['papel'] !== 'professor') {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':vagas',        $vagas);
         $stmt->bindParam(':descricao',    $descricao);
         $stmt->execute();
-        header('Location: index.php');
+        header('Location: painel.php');
         exit;
     }
 }
@@ -89,7 +89,7 @@ include 'includes/layout.php';
 
                         <div class="d-flex gap-2 mt-4">
                             <button type="submit" class="btn btn-primary px-4">Salvar Aula</button>
-                            <a href="index.php" class="btn btn-secondary">Cancelar</a>
+                            <a href="painel.php" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </form>
 

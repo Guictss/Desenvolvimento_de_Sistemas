@@ -3,12 +3,12 @@ include 'sessao.php';
 include 'conexao.php';
 
 if ($_SESSION['papel'] !== 'professor') {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
 if (!isset($_GET['id'])) {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
@@ -23,7 +23,7 @@ $stmt->execute();
 $aula = $stmt->fetch(PDO::FETCH_OBJ);
 
 if (!$aula) {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':descricao',   $descricao);
         $stmt->bindParam(':id',          $id);
         $stmt->execute();
-        header('Location: index.php');
+        header('Location: painel.php');
         exit;
     }
 }
@@ -108,7 +108,7 @@ include 'includes/layout.php';
 
                         <div class="d-flex gap-2 mt-4">
                             <button type="submit" class="btn btn-warning px-4 fw-bold">Salvar Alterações</button>
-                            <a href="index.php" class="btn btn-secondary">Cancelar</a>
+                            <a href="painel.php" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </form>
 

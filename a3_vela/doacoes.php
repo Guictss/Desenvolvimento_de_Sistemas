@@ -3,7 +3,7 @@ include 'sessao.php';
 include 'conexao.php';
 
 if ($_SESSION['papel'] !== 'professor') {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 

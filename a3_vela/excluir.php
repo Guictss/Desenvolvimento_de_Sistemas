@@ -3,12 +3,12 @@ include 'sessao.php';
 include 'conexao.php';
 
 if ($_SESSION['papel'] !== 'professor') {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
 if (!isset($_GET['id'])) {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
@@ -22,7 +22,7 @@ $stmt->execute();
 $aula = $stmt->fetch(PDO::FETCH_OBJ);
 
 if (!$aula) {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
@@ -39,11 +39,11 @@ try {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 
 } catch (PDOException $e) {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 ?>

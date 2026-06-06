@@ -2,13 +2,13 @@
 session_start();
 
 if (isset($_SESSION['usuario_id'])) {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
 include 'conexao.php';
 
-$erro  = '';
+$erro    = '';
 $sucesso = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -21,15 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($nome) || empty($email) || empty($data_nascimento) || empty($senha)) {
         $erro = 'Preencha todos os campos obrigatórios.';
-
     } elseif ($senha !== $confirma) {
         $erro = 'As senhas não coincidem.';
-
     } elseif (strlen($senha) < 6) {
         $erro = 'A senha deve ter no mínimo 6 caracteres.';
-
     } else {
-        // Verifica se o e-mail já está cadastrado
         $sqlCheck = "SELECT id FROM usuarios WHERE email = :email";
         $stmtCheck = $conexao->prepare($sqlCheck);
         $stmtCheck->bindParam(':email', $email);
@@ -61,17 +57,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Cadastro · Vela Para Todos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
 </head>
-<body class="bg-login d-flex align-items-center justify-content-center min-vh-100 py-5">
+<body>
 
-    <div class="card shadow-lg" style="width: 480px;">
+<div class="auth-container">
 
-        <div class="card-header text-center py-4">
-            <h4 class="mb-0 fw-bold text-white">⛵ Vela Para Todos</h4>
-            <small class="text-white opacity-75">Criar nova conta</small>
+    <!-- ── Coluna visual ──────────────────────────────────────────────── -->
+    <div class="auth-visual">
+        <div class="auth-pattern"></div>
+        <div class="auth-content">
+            <img src="assets/img/logo-vertical.png" alt="Vela Para Todos" class="auth-logo">
+            <img src="assets/img/mascote.png" alt="Zoé" class="auth-mascote">
+            <h3 class="fw-bold mb-2 text-white">Junte-se a nós!</h3>
+            <p class="text-white opacity-75 px-4">
+                Cadastre-se e faça parte da maior iniciativa de vela adaptada do Brasil.
+            </p>
         </div>
+    </div>
 
-        <div class="card-body p-4">
+    <!-- ── Coluna do formulário ───────────────────────────────────────── -->
+    <div class="auth-form">
+        <div class="auth-form-inner">
+
+            <a href="index.php" class="text-decoration-none mb-4 d-inline-block" style="color: var(--gray);">
+                ← Voltar ao início
+            </a>
+
+            <h2 class="fw-bold mb-2" style="color: var(--azul-dark);">Criar conta</h2>
+            <p class="text-muted mb-4">Preencha os dados para se cadastrar</p>
 
             <?php if ($erro): ?>
                 <div class="alert alert-danger py-2"><?php echo $erro ?></div>
@@ -88,22 +102,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Nome completo *</label>
-                    <input type="text" name="nome" class="form-control"
-                           placeholder="Seu nome completo" required>
+                    <input type="text" name="nome" class="form-control" required>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label fw-semibold">E-mail *</label>
-                    <input type="email" name="email" class="form-control"
-                           placeholder="seu@email.com" required>
+                <div class="row g-3">
+                    <div class="col-md-7">
+                        <label class="form-label fw-semibold">E-mail *</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="form-label fw-semibold">Data nasc. *</label>
+                        <input type="date" name="data_nascimento" class="form-control" required>
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label fw-semibold">Data de nascimento *</label>
-                    <input type="date" name="data_nascimento" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
+                <div class="mb-3 mt-3">
                     <label class="form-label fw-semibold">Perfil *</label>
                     <select name="papel" class="form-select" required>
                         <option value="aluno">Aluno</option>
@@ -111,31 +124,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label fw-semibold">Senha *</label>
-                    <input type="password" name="senha" class="form-control"
-                           placeholder="Mínimo 6 caracteres" required>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Senha *</label>
+                        <input type="password" name="senha" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Confirmar *</label>
+                        <input type="password" name="confirma" class="form-control" required>
+                    </div>
                 </div>
 
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">Confirmar senha *</label>
-                    <input type="password" name="confirma" class="form-control"
-                           placeholder="Repita a senha" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100 fw-bold py-2">Cadastrar</button>
+                <button type="submit" class="btn btn-vela-azul w-100 py-3 fw-bold mt-4">
+                    Cadastrar
+                </button>
 
             </form>
 
-        </div>
+            <p class="text-center mt-4 mb-0" style="color: var(--gray);">
+                Já tem conta?
+                <a href="login.php" class="fw-bold text-decoration-none" style="color: var(--azul);">
+                    Faça login
+                </a>
+            </p>
 
-        <div class="card-footer text-center py-3">
-            <small style="color: #4A4A4A;">
-                Já tem conta? <a href="login.php" style="color: #1D71B8;">Faça login</a>
-            </small>
         </div>
-
     </div>
+
+</div>
 
 </body>
 </html>

@@ -4,7 +4,7 @@ include 'conexao.php';
 
 // Apenas alunos podem se inscrever
 if ($_SESSION['papel'] !== 'aluno') {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 

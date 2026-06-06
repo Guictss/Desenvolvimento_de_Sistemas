@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['usuario_id'])) {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuario_id'] = $user->id;
         $_SESSION['usuario']    = $user->nome;
         $_SESSION['papel']      = $user->papel;
-        header('Location: index.php');
+        header('Location: painel.php');
         exit;
     } else {
         $erro = 'E-mail ou senha incorretos.';
@@ -40,18 +40,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login · Vela Para Todos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
 </head>
-<body class="bg-login d-flex align-items-center justify-content-center min-vh-100">
+<body>
 
-    <div class="card shadow-lg" style="width: 420px;">
+<div class="auth-container">
 
-        <div class="card-header text-center py-4">
-            <h4 class="mb-0 fw-bold text-white">⛵ Vela Para Todos</h4>
-            <small class="text-white opacity-75">Federação Brasileira de Vela Adaptada</small>
+    <!-- ── Coluna visual (esquerda) ───────────────────────────────────── -->
+    <div class="auth-visual">
+        <div class="auth-pattern"></div>
+        <div class="auth-content">
+            <img src="assets/img/logo-vertical.png" alt="Vela Para Todos" class="auth-logo">
+            <img src="assets/img/mascote.png" alt="Zoé" class="auth-mascote">
+            <h3 class="fw-bold mb-2 text-white">Bem-vindo de volta!</h3>
+            <p class="text-white opacity-75 px-4">
+                Acesse sua conta e continue navegando rumo à inclusão pelo esporte.
+            </p>
         </div>
+    </div>
 
-        <div class="card-body p-4">
-            <h5 class="mb-4 text-center" style="color: #19629E;">Acesse sua conta</h5>
+    <!-- ── Coluna do formulário (direita) ─────────────────────────────── -->
+    <div class="auth-form">
+        <div class="auth-form-inner">
+
+            <a href="index.php" class="text-decoration-none mb-4 d-inline-block" style="color: var(--gray);">
+                ← Voltar ao início
+            </a>
+
+            <h2 class="fw-bold mb-2" style="color: var(--azul-dark);">Acesse sua conta</h2>
+            <p class="text-muted mb-4">Entre com seus dados para continuar</p>
 
             <?php if ($erro): ?>
                 <div class="alert alert-danger py-2"><?php echo $erro ?></div>
@@ -60,21 +77,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="post">
                 <div class="mb-3">
                     <label class="form-label fw-semibold">E-mail</label>
-                    <input type="email" name="usuario" class="form-control" placeholder="seu@email.com" required>
+                    <input type="email" name="usuario" class="form-control form-control-lg"
+                           placeholder="seu@email.com" required>
                 </div>
                 <div class="mb-4">
                     <label class="form-label fw-semibold">Senha</label>
-                    <input type="password" name="senha" class="form-control" placeholder="••••••••" required>
+                    <input type="password" name="senha" class="form-control form-control-lg"
+                           placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100 fw-bold py-2">Entrar</button>
+                <button type="submit" class="btn btn-vela-azul w-100 py-3 fw-bold mb-3">
+                    Entrar
+                </button>
             </form>
-        </div>
 
-        <div class="card-footer text-center py-3">
-            <small style="color: #4A4A4A;">Não tem conta? <a href="cadastro.php" style="color: #1D71B8;">Cadastre-se</a></small>
-        </div>
+            <p class="text-center mt-4 mb-0" style="color: var(--gray);">
+                Não tem uma conta?
+                <a href="cadastro.php" class="fw-bold text-decoration-none" style="color: var(--azul);">
+                    Cadastre-se
+                </a>
+            </p>
 
+        </div>
     </div>
+
+</div>
 
 </body>
 </html>

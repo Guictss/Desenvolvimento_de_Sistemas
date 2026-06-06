@@ -4,7 +4,7 @@ include 'conexao.php';
 
 // Apenas professores acessam
 if ($_SESSION['papel'] !== 'professor') {
-    header('Location: index.php');
+    header('Location: painel.php');
     exit;
 }
 
