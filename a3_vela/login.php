@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="auth-pattern"></div>
         <div class="auth-content">
             <img src="assets/img/logo-vertical.png" alt="Vela Para Todos" class="auth-logo">
-            <img src="assets/img/mascote.png" alt="Zoé" class="auth-mascote">
+            <img src="assets/img/mascote.png" alt="Zoe" class="auth-mascote">
             <h3 class="fw-bold mb-2 text-white">Bem-vindo de volta!</h3>
             <p class="text-white opacity-75 px-4">
                 Acesse sua conta e continue navegando rumo à inclusão pelo esporte.

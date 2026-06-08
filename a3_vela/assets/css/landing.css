@@ -96,16 +96,120 @@
     justify-content: center;
 }
 
-/* ── Mascote ──────────────────────────────────────────────────────────── */
-.mascote-img {
-    max-height: 350px;
-    filter: drop-shadow(0 8px 16px rgba(29, 113, 184, 0.2));
-    animation: float 4s ease-in-out infinite;
+/* ── Mascote Zoe (interativa) ────────────────────────────────────────── */
+.mascote-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    perspective: 1000px;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-12px); }
+.mascote-inner {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+.mascote-img {
+    max-height: 350px;
+    width: auto;
+    filter: drop-shadow(0 12px 24px rgba(29, 113, 184, 0.25));
+    animation: zoe-float 5s ease-in-out infinite;
+    transition: filter 0.3s;
+}
+
+@keyframes zoe-float {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-18px) rotate(3deg);
+    }
+}
+
+/* Hover — Zoe fica destacada */
+.mascote-wrapper:hover .mascote-img {
+    filter: drop-shadow(0 20px 36px rgba(29, 113, 184, 0.4))
+            drop-shadow(0 0 20px rgba(249, 178, 51, 0.3));
+}
+
+/* Pirueta no clique */
+.mascote-wrapper.spinning .mascote-img {
+    animation: zoe-spin 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes zoe-spin {
+    0%   { transform: translateY(0) rotate(0deg) scale(1); }
+    25%  { transform: translateY(-50px) rotate(180deg) scale(1.15); }
+    50%  { transform: translateY(-30px) rotate(360deg) scale(1.1); }
+    75%  { transform: translateY(-10px) rotate(540deg) scale(1.05); }
+    100% { transform: translateY(0) rotate(720deg) scale(1); }
+}
+
+/* Balão de fala */
+.zoe-bubble {
+    position: absolute;
+    top: 30px;
+    right: -20px;
+    background: white;
+    padding: 14px 22px;
+    border-radius: 20px;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 8px 32px rgba(29, 113, 184, 0.2);
+    font-weight: 600;
+    color: var(--azul-dark);
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(20px) scale(0.7);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.zoe-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 24px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: 4px 4px 8px rgba(29, 113, 184, 0.08);
+}
+
+.mascote-wrapper:hover .zoe-bubble {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Sparkles */
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1.5rem;
+    opacity: 0;
+    animation: sparkle-anim 2s ease-in-out infinite;
+}
+
+.sparkle:nth-child(3) { top: 20%; left: 5%;   animation-delay: 0s; }
+.sparkle:nth-child(4) { top: 35%; right: -5%; animation-delay: 0.4s; }
+.sparkle:nth-child(5) { bottom: 25%; left: -8%; animation-delay: 0.8s; }
+.sparkle:nth-child(6) { top: 60%; right: 5%;  animation-delay: 1.2s; }
+
+@keyframes sparkle-anim {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+}
+
+.mascote-wrapper:hover .sparkle {
+    animation-duration: 1.2s;
 }
 
 /* ── Notícias ─────────────────────────────────────────────────────────── */

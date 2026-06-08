@@ -17,6 +17,7 @@ if (isset($_SESSION['usuario_id'])) {
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/landing.css">
 </head>
+
 <body>
 
 <!-- ── Faixa decorativa superior (padrão amarelo) ────────────────────────── -->
@@ -58,9 +59,7 @@ if (isset($_SESSION['usuario_id'])) {
 
             <div class="col-md-6">
                 <div class="card card-vela h-100 shadow-sm">
-                    <div class="card-img-vela" style="background-image: linear-gradient(135deg, var(--azul-med), var(--azul-dark));">
-                        <span style="font-size: 4rem;">⛵</span>
-                    </div>
+                    <div class="card-img-vela" style="background-image: url('assets/img/infraestrutura.jpg');"></div>
                     <div class="card-body p-4">
                         <h4 class="fw-bold mb-3" style="color: var(--azul-dark);">Infraestrutura</h4>
                         <p style="color: var(--gray);">
@@ -76,9 +75,7 @@ if (isset($_SESSION['usuario_id'])) {
 
             <div class="col-md-6">
                 <div class="card card-vela h-100 shadow-sm">
-                    <div class="card-img-vela" style="background-image: linear-gradient(135deg, var(--amarelo), var(--amarelo-d));">
-                        <span style="font-size: 4rem;">🌊</span>
-                    </div>
+                    <div class="card-img-vela" style="background-image: url('assets/img/modalidade.jpg');"></div>
                     <div class="card-body p-4">
                         <h4 class="fw-bold mb-3" style="color: var(--azul-dark);">Sobre a modalidade</h4>
                         <p style="color: var(--gray);">
@@ -101,12 +98,21 @@ if (isset($_SESSION['usuario_id'])) {
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-5 text-center">
-                <img src="assets/img/mascote.png" alt="Zoé - mascote do projeto" class="img-fluid mascote-img">
+                <div class="mascote-wrapper" id="zoeWrapper">
+                    <div class="mascote-inner">
+                        <img src="assets/img/mascote.png" alt="Zoe - mascote do projeto" class="mascote-img">
+                    </div>
+                    <div class="zoe-bubble" id="zoeBubble">Olá! Sou a Zoe 👋</div>
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">⭐</span>
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">💫</span>
+                </div>
             </div>
             <div class="col-md-7">
-                <h2 class="fw-bold mb-3" style="color: var(--azul-dark);">Conheça a Zoé!</h2>
+                <h2 class="fw-bold mb-3" style="color: var(--azul-dark);">Conheça a Zoe!</h2>
                 <p class="fs-5" style="color: var(--gray);">
-                    Zoé é a mascote do Programa Vela Para Todos. Inspirada na liberdade dos pássaros 
+                    Zoe é a mascote do Programa Vela Para Todos. Inspirada na liberdade dos pássaros 
                     e na força do vento que move as velas, ela representa a missão do projeto: 
                     levar a alegria de velejar para todas as pessoas, sem exceção.
                 </p>
@@ -126,9 +132,7 @@ if (isset($_SESSION['usuario_id'])) {
 
             <div class="col-md-4">
                 <div class="card card-noticia h-100 shadow">
-                    <div class="card-img-noticia" style="background-image: linear-gradient(135deg, #1F7AC4, #19629E);">
-                        <span style="font-size: 3rem;">📰</span>
-                    </div>
+                    <div class="card-img-noticia" style="background-image: url('assets/img/noticia-1.jpg');"></div>
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-3" style="color: var(--azul-dark);">Projeto social ensina pessoas com deficiência a velejar</h5>
                         <p class="small" style="color: var(--gray);">
@@ -142,9 +146,7 @@ if (isset($_SESSION['usuario_id'])) {
 
             <div class="col-md-4">
                 <div class="card card-noticia h-100 shadow">
-                    <div class="card-img-noticia" style="background-image: linear-gradient(135deg, var(--amarelo), var(--amarelo-d));">
-                        <span style="font-size: 3rem;">🏆</span>
-                    </div>
+                    <div class="card-img-noticia" style="background-image: url('assets/img/noticia-2.jpg');"></div>
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-3" style="color: var(--azul-dark);">Lago Paranoá recebe Copa BRB da Vela Adaptada</h5>
                         <p class="small" style="color: var(--gray);">
@@ -158,9 +160,7 @@ if (isset($_SESSION['usuario_id'])) {
 
             <div class="col-md-4">
                 <div class="card card-noticia h-100 shadow">
-                    <div class="card-img-noticia" style="background-image: linear-gradient(135deg, #1F7AC4, var(--amarelo));">
-                        <span style="font-size: 3rem;">🥇</span>
-                    </div>
+                    <div class="card-img-noticia" style="background-image: url('assets/img/noticia-3.jpg');"></div>
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-3" style="color: var(--azul-dark);">Brasiliense é a primeira brasileira campeã mundial de vela adaptada</h5>
                         <p class="small" style="color: var(--gray);">
@@ -197,6 +197,48 @@ if (isset($_SESSION['usuario_id'])) {
 
 <!-- ── Faixa decorativa inferior ─────────────────────────────────────────── -->
 <div class="pattern-bottom"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.getElementById('zoeWrapper');
+    if (!wrapper) return;
+
+    const inner  = wrapper.querySelector('.mascote-inner');
+    const bubble = document.getElementById('zoeBubble');
+
+    const mensagens = [
+        'Olá! Sou a Zoe ',
+        'Bora velejar? ',
+        'Vento a favor! ',
+        'Você é incrível! ',
+        'Vamos juntos! '
+    ];
+    let msgIndex = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        if (wrapper.classList.contains('spinning')) return;
+        const rect = wrapper.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const rotY = Math.max(-15, Math.min(15, ((e.clientX - centerX) / window.innerWidth) * 30));
+        const rotX = Math.max(-10, Math.min(10, ((centerY - e.clientY) / window.innerHeight) * 20));
+        inner.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+    });
+
+    document.addEventListener('mouseleave', () => {
+        inner.style.transform = '';
+    });
+
+    wrapper.addEventListener('click', () => {
+        if (wrapper.classList.contains('spinning')) return;
+        wrapper.classList.add('spinning');
+        msgIndex = (msgIndex + 1) % mensagens.length;
+        bubble.textContent = mensagens[msgIndex];
+        setTimeout(() => wrapper.classList.remove('spinning'), 900);
+    });
+});
+</script>
 
 </body>
 </html>

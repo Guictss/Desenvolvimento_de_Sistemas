@@ -22,14 +22,14 @@ $stmt->execute();
 include 'includes/layout.php';
 ?>
 
-    <h4 class="fw-bold mb-4" style="color: var(--azul-dark);">👥 Usuários do Sistema</h4>
+    <h4 class="fw-bold mb-4" style="color: var(--azul-dark);">Usuários do Sistema</h4>
 
     <!-- Filtro -->
     <div class="card mb-4 shadow-sm">
         <div class="card-body py-3">
             <form method="get" class="row g-3 align-items-end">
                 <div class="col-md-6">
-                    <label class="form-label fw-semibold">🎯 Filtrar por perfil</label>
+                    <label class="form-label fw-semibold">Filtrar por perfil</label>
                     <select name="papel" class="form-select">
                         <option value="">Todos os perfis</option>
                         <option value="aluno"     <?php echo $papel === 'aluno'     ? 'selected' : '' ?>>Apenas Alunos</option>

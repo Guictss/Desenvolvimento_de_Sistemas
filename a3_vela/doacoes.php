@@ -24,14 +24,14 @@ $total   = array_sum(array_column($doacoes, 'valor'));
 include 'includes/layout.php';
 ?>
 
-    <h4 class="fw-bold mb-4" style="color: var(--azul-dark);">💰 Doações Recebidas</h4>
+    <h4 class="fw-bold mb-4" style="color: var(--azul-dark);">Doações Recebidas</h4>
 
     <!-- Filtro -->
     <div class="card mb-4 shadow-sm">
         <div class="card-body py-3">
             <form method="get" class="row g-3 align-items-end">
                 <div class="col-md-6">
-                    <label class="form-label fw-semibold">💳 Filtrar por forma de pagamento</label>
+                    <label class="form-label fw-semibold">Filtrar por forma de pagamento</label>
                     <select name="forma" class="form-select">
                         <option value="">Todas as formas</option>
                         <option value="pix"           <?php echo $forma === 'pix'           ? 'selected' : '' ?>>Pix</option>
