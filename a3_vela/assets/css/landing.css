@@ -258,3 +258,229 @@
     height: 60px;
     filter: brightness(0) invert(1); /* deixa a logo branca */
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SEÇÃO CONTATO + MAPA
+─────────────────────────────────────────────────────────────────────────── */
+.contato-section {
+    background: white;
+}
+
+.contato-mapa {
+    width: 100%;
+    height: 480px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(29, 113, 184, 0.15);
+    overflow: hidden;
+}
+
+.contato-info {
+    background: linear-gradient(135deg, var(--light-blue), white);
+    border-radius: 16px;
+    padding: 32px;
+    border-left: 4px solid var(--amarelo);
+}
+
+.info-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+}
+
+.info-item:last-of-type {
+    margin-bottom: 16px;
+}
+
+.info-icon {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 2px solid var(--light-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(29, 113, 184, 0.08);
+    transition: all 0.2s;
+}
+
+.info-item:hover .info-icon {
+    background: var(--light-blue);
+    border-color: var(--azul);
+    transform: translateY(-2px);
+}
+
+.info-item strong {
+    display: block;
+    color: var(--azul-dark);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.info-item p {
+    margin: 0;
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Personalização do marcador do Leaflet */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
+    padding: 4px 8px;
+}
+
+.leaflet-popup-content {
+    font-family: -apple-system, sans-serif;
+    font-size: 0.9rem;
+}
+
+.leaflet-popup-content strong {
+    color: var(--azul-dark);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BARRA DE ACESSIBILIDADE FLUTUANTE
+─────────────────────────────────────────────────────────────────────────── */
+.acess-toolbar {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border-radius: 30px;
+    padding: 8px;
+    box-shadow: 0 8px 24px rgba(29, 113, 184, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 999;
+    border: 2px solid var(--light-blue);
+}
+
+.acess-toolbar button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: var(--light-blue);
+    color: var(--azul-dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acess-toolbar button:hover {
+    background: var(--azul);
+    color: white;
+    transform: scale(1.05);
+}
+
+.acess-toolbar button:focus {
+    outline: 3px solid var(--amarelo);
+    outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SEÇÃO ACESSIBILIDADE
+─────────────────────────────────────────────────────────────────────────── */
+.acessibilidade-section {
+    background: white;
+}
+
+.acess-recursos {
+    background: linear-gradient(135deg, var(--light-blue), white);
+    border-radius: 16px;
+    padding: 32px;
+    border-left: 4px solid var(--azul);
+    height: 100%;
+}
+
+.recurso-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 22px;
+    align-items: flex-start;
+}
+
+.recurso-item:last-child {
+    margin-bottom: 0;
+}
+
+.recurso-icon {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 2px solid var(--light-blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(29, 113, 184, 0.08);
+}
+
+.recurso-item strong {
+    display: block;
+    color: var(--azul-dark);
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+}
+
+.recurso-item p {
+    margin: 0;
+    color: var(--gray);
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   MODO ALTO CONTRASTE
+─────────────────────────────────────────────────────────────────────────── */
+body.alto-contraste {
+    background: #000 !important;
+    color: #FFF !important;
+}
+
+body.alto-contraste *:not(.acess-toolbar):not(.acess-toolbar *) {
+    background-color: #000 !important;
+    color: #FFF !important;
+    border-color: #FFD700 !important;
+}
+
+body.alto-contraste a,
+body.alto-contraste a * {
+    color: #FFD700 !important;
+}
+
+body.alto-contraste button,
+body.alto-contraste .btn-vela-azul {
+    background: #FFD700 !important;
+    color: #000 !important;
+    border: 2px solid #FFF !important;
+}
+
+body.alto-contraste img {
+    filter: grayscale(100%) contrast(120%);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .acess-toolbar {
+        right: 10px;
+        padding: 6px;
+    }
+    .acess-toolbar button {
+        width: 36px;
+        height: 36px;
+        font-size: 0.75rem;
+    }
+}
